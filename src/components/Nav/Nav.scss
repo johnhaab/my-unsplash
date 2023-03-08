@@ -58,6 +58,10 @@ $color-main: rgba(38, 70, 83, 1);
                     width: 8rem;
                 }
             }
+
+            @media screen and (max-width: 768px) {
+                margin-right: 1rem;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -94,7 +98,9 @@ $color-main: rgba(38, 70, 83, 1);
         padding-left: 2.5rem;
         padding-right: 2.5rem;
 
-        position: fixed;
+        justify-content: center;
+
+        position: absolute;
         top: 8.2%;
         left: 50%;
         transform: translate(-50%, -50%);
