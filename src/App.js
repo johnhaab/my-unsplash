@@ -1,10 +1,14 @@
-import './App.scss';
+import "./App.scss";
 
-import Nav from './components/Nav/Nav';
+import Nav from "./components/Nav/Nav";
+import Feed from "./components/Feed/Feed";
 
 function App() {
   return (
-    <Nav />
+    <div className="app">
+      <Nav className="nav" />
+      <Feed />
+    </div>
   );
 }
 

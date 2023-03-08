@@ -3,3 +3,102 @@
 $font-main: 'Montserrat', sans-serif;
 $color-main: rgba(38, 70, 83, 1);
 
+.container-nav {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 2.5rem;
+
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.95);
+
+    .inner-container-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo-nav {
+            padding-right: 1rem;
+            margin-top: 1rem;
+
+            @media screen and (max-width: 768px) {
+                padding-bottom: 2rem;
+                
+                position: absolute;
+                top: 10%;
+                left: 55%;
+                transform: translate(-50%, -50%);
+                padding-top: 2rem;
+            }
+        }
+
+        .search-nav {
+            display: flex;
+            align-items: center;
+
+            border: 1px solid rgba(23, 22, 20, 0.4);
+            border-radius: .6rem;
+
+            .search {
+                color: rgba(23, 22, 20, 0.4);
+                margin-left: 15px;
+                font-size: 1.2rem;
+            }
+
+            input {
+                padding: .75rem;
+                background-color: transparent;
+                border: none;
+
+                &:focus {
+                    outline: none;
+                }
+
+                @media screen and (max-width: 768px) {
+                    width: 8rem;
+                }
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .add-btn-nav {
+        button {
+            padding: .75rem 1rem;
+            border: none;
+            border-radius: .6rem;
+            background-color: $color-main;
+            color: #fff;
+            font-family: $font-main;
+            font-weight: 600;
+            font-size: .75rem;
+            cursor: pointer;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        }
+
+        @media screen and (max-width: 768px) {
+            border-radius: .6rem;
+            box-shadow: rgba(17, 12, 46, 0.4) 0px 25px 100px 0px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+
+        position: fixed;
+        top: 8.2%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 100%;
+    }
+}

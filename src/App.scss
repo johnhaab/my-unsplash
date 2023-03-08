@@ -9,6 +9,14 @@ $color-main: rgba(38, 70, 83, 1);
   box-sizing: border-box;
 }
 
+body {
+  padding: 0rem 5.5rem;
+
+  @media screen and (max-width: 768px) {
+    padding: 0rem 1.5rem;
+  }
+}
+
 .App {
   font-family: $font-main;
 }
