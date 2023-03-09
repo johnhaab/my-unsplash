@@ -1,12 +1,13 @@
 import React from "react";
 import CardList from "../CardList/CardList";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import "./Feed.scss";
 
-const Feed = () => {
+const Feed = ({ items }) => {
   return (
     <div className="container-feed">
-      <CardList />
+      <CardList items={items} />
     </div>
   );
 };

@@ -1,13 +1,18 @@
 import React from "react";
 
+import "./Card.scss";
+
 const Card = ({ img, title }) => {
   return (
-    <div>
-      <div>
-        <img src={img} alt={title} />
-        <p>{title}</p>
-      </div>
-    </div>
+    <>
+      <img
+        src={img}
+        alt={title}
+        width="100%"
+        style={{ display: "block" }}
+      ></img>
+      <p>{title}</p>
+    </>
   );
 };
 

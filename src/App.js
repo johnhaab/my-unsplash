@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.scss";
 import Nav from "./components/Nav/Nav";
@@ -9,21 +9,28 @@ class App extends React.Component {
     super(props);
     this.state = {
       items: [],
-      searchfield: "",
+      searchField: "",
+      error: false,
+      isLoaded: false,
     };
   }
 
   componentDidMount() {
     fetch("http://localhost:5050/images")
       .then((response) => response.json())
-      .then((data) => this.setState({ items: data }));
+      .then((data) => {
+        this.setState({
+          isLoaded: true,
+          items: data,
+        }).catch((error) => this.setState({ error, isLoaded: true }));
+      });
   }
 
   render() {
     return (
       <div className="app">
-        <Nav className="nav" />
-        <Feed />
+        <Nav />
+        <Feed items={this.state.items} searchField={this.state.searchField} />
       </div>
     );
   }
