@@ -11,7 +11,6 @@ const Card = ({ img, title }) => {
         width="100%"
         style={{ display: "block" }}
       ></img>
-      <p>{title}</p>
     </>
   );
 };
