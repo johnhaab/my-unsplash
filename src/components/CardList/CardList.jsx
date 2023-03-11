@@ -2,15 +2,35 @@ import React, { useState } from "react";
 import Card from "../Card/Card";
 import HoverCard from "../HoverCard/HoverCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { motion } from "framer-motion";
 
 import "./CardList.scss";
 
 const CardList = ({ items }) => {
   const [hoverIndex, setHoverIndex] = useState(null);
+  const [id, setId] = useState(null);
 
   const handleCardHover = (index) => {
     setHoverIndex(index);
+  };
+
+  const handleCardHoverId = (id) => {
+    setId(id);
+  };
+
+  const handleCardLeaveId = () => {
+    setId(null);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await fetch(`http://localhost:8080/images/${id}`, {
+        method: "DELETE",
+      });
+      console.log("Photo deleted successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -20,20 +40,24 @@ const CardList = ({ items }) => {
           {items.map((items, index) => (
             <div
               key={index}
-              onMouseEnter={() => handleCardHover(index)}
-              onMouseLeave={() => handleCardHover(null)}
+              id={items.id}
+              onMouseEnter={() => {
+                handleCardHover(index);
+                handleCardHoverId(items.id);
+              }}
+              onMouseLeave={() => {
+                handleCardHover(null);
+                handleCardLeaveId();
+              }}
             >
               {hoverIndex === index ? (
-                <HoverCard img={items.img} title={items.title} />
+                <HoverCard
+                  img={items.img}
+                  title={items.title}
+                  handleDelete={handleDelete}
+                />
               ) : (
-                <motion.div
-                // initial={{ opacity: 0, scale: 0 }}
-                // whileInView={{ opacity: 1, scale: 1 }}
-                // viewport={{ once: true }}
-                // animate={{ opacity: 1 }}
-                >
-                  <Card img={items.img} title={items.title} />
-                </motion.div>
+                <Card img={items.img} title={items.title} />
               )}
             </div>
           ))}

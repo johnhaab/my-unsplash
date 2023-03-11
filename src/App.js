@@ -21,14 +21,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:5050/images")
+    fetch("http://localhost:8080/images")
       .then((response) => response.json())
-      .then((data) =>
+      .then((data) => {
+        const photos = data.photos.reverse();
         this.setState({
           isLoaded: true,
-          items: data,
-        })
-      )
+          items: photos,
+        });
+      })
       .catch((error) => this.setState({ error, isLoaded: true }));
   }
 
@@ -43,6 +44,7 @@ class App extends React.Component {
 
   handleClose = () => {
     this.setState({ upload: false });
+    window.location.reload();
   };
 
   render() {

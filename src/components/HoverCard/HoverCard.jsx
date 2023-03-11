@@ -2,7 +2,7 @@ import React from "react";
 
 import "./HoverCard.scss";
 
-const HoverCard = ({ img, title }) => {
+const HoverCard = ({ img, title, handleDelete }) => {
   return (
     <div className="container">
       <img
@@ -14,10 +14,7 @@ const HoverCard = ({ img, title }) => {
       ></img>
       <div className="overlay">
         <p className="title">{title}</p>
-        <button
-          className="del-btn"
-          onClick={() => console.log("clicked del-btn")}
-        >
+        <button className="del-btn" onClick={() => handleDelete()}>
           Delete
         </button>
       </div>
