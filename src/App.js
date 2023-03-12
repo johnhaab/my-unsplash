@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const socket = new WebSocket("ws://localhost:8081");
+    const socket = new WebSocket("ws://209.192.200.84:8181");
 
     socket.onopen = () => {
       console.log("Connected to WebSocket server");
@@ -53,14 +53,14 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({ searchField: e.target.value });
     const response = await fetch(
-      `http://localhost:8080/images?search=${this.state.searchField}`
+      `http://209.192.200.84:8080/images?search=${this.state.searchField}`
     );
     const data = await response.json();
     // console.log(data); // log the data received from the server
     this.setState({ items: data.photos || [] });
 
     if (this.state.searchField === "") {
-      const response = await fetch(`http://localhost:8080/images`);
+      const response = await fetch(`http://209.192.200.84:8080/images`);
       const data = await response.json();
       // console.log(data); // log the data received from the server
       this.setState({ items: data.photos.reverse() || [] });
