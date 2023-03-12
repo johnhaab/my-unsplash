@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const socket = new WebSocket("ws://209.192.200.84:8181");
+    const socket = new WebSocket("wss://209.192.200.84:8181");
 
     socket.onopen = () => {
       console.log("Connected to WebSocket server");
