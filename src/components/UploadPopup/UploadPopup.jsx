@@ -21,11 +21,11 @@ const UploadPopup = ({ handleClose }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        handleClose();
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+    handleClose();
   };
 
   const handleTitleChange = (e) => {

@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav";
 import Feed from "./components/Feed/Feed";
 import UploadPopup from "./components/UploadPopup/UploadPopup";
 import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./App.scss";
 
@@ -21,21 +22,49 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/images")
-      .then((response) => response.json())
-      .then((data) => {
-        const photos = data.photos.reverse();
+    const socket = new WebSocket("ws://localhost:8081");
+
+    socket.onopen = () => {
+      console.log("Connected to WebSocket server");
+    };
+
+    socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      if (message.type === "INITIAL_STATE") {
+        const photos = message.data.photos || [];
         this.setState({
           isLoaded: true,
-          items: photos,
+          items: photos.reverse(),
         });
-      })
-      .catch((error) => this.setState({ error, isLoaded: true }));
+      } else if (message.type === "STATE_UPDATE") {
+        const photos = message.data.photos || [];
+        this.setState({
+          items: photos.reverse(),
+        });
+      }
+    };
+
+    socket.onclose = () => {
+      console.log("Disconnected from WebSocket server");
+    };
   }
 
-  handleSearch = (e) => {
+  handleSearch = async (e) => {
+    e.preventDefault();
     this.setState({ searchField: e.target.value });
-    console.log(this.state.searchField);
+    const response = await fetch(
+      `http://localhost:8080/images?search=${this.state.searchField}`
+    );
+    const data = await response.json();
+    // console.log(data); // log the data received from the server
+    this.setState({ items: data.photos || [] });
+
+    if (this.state.searchField === "") {
+      const response = await fetch(`http://localhost:8080/images`);
+      const data = await response.json();
+      // console.log(data); // log the data received from the server
+      this.setState({ items: data.photos.reverse() || [] });
+    }
   };
 
   handleClick = () => {
@@ -44,7 +73,7 @@ class App extends React.Component {
 
   handleClose = () => {
     this.setState({ upload: false });
-    window.location.reload();
+    console.log("close");
   };
 
   render() {
@@ -63,7 +92,14 @@ class App extends React.Component {
           handleSearch={this.handleSearch}
           handleClick={this.handleClick}
         />
-        <Feed items={this.state.items} cardHover={this.state.cardHover} />
+        {this.state.isLoaded === false ? (
+          <div className="loader">
+            <CircularProgress className="spinner" />
+            <p>Feed loading...</p>
+          </div>
+        ) : (
+          <Feed items={this.state.items} cardHover={this.state.cardHover} />
+        )}
       </div>
     );
   }

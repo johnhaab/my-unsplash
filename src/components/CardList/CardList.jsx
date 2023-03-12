@@ -5,7 +5,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import "./CardList.scss";
 
-const CardList = ({ items }) => {
+const CardList = ({ items, filteredPhotos }) => {
   const [hoverIndex, setHoverIndex] = useState(null);
   const [id, setId] = useState(null);
 
@@ -27,7 +27,6 @@ const CardList = ({ items }) => {
         method: "DELETE",
       });
       console.log("Photo deleted successfully!");
-      window.location.reload();
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +35,7 @@ const CardList = ({ items }) => {
   return (
     <>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-        <Masonry gutter="1rem">
+        <Masonry gutter="2rem">
           {items.map((items, index) => (
             <div
               key={index}
@@ -57,7 +56,7 @@ const CardList = ({ items }) => {
                   handleDelete={handleDelete}
                 />
               ) : (
-                <Card img={items.img} title={items.title} />
+                <Card img={items.img} title={items.title} className="cards" />
               )}
             </div>
           ))}

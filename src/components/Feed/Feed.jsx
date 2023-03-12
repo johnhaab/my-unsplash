@@ -3,7 +3,7 @@ import CardList from "../CardList/CardList";
 
 import "./Feed.scss";
 
-const Feed = ({ items, noHover, onHover, cardHover }) => {
+const Feed = ({ items, noHover, onHover, cardHover, filteredPhotos }) => {
   return (
     <div className="container-feed">
       <CardList
@@ -11,6 +11,7 @@ const Feed = ({ items, noHover, onHover, cardHover }) => {
         noHover={noHover}
         onHover={onHover}
         cardHover={cardHover}
+        filteredPhotos={filteredPhotos}
       />
     </div>
   );
