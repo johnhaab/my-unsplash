@@ -23,7 +23,7 @@ const CardList = ({ items, filteredPhotos }) => {
 
   const handleDelete = async () => {
     try {
-      await fetch(`http://localhost:8080/images/${id}`, {
+      await fetch(`http://209.192.200.84:8080/images/${id}`, {
         method: "DELETE",
       });
       console.log("Photo deleted successfully!");
