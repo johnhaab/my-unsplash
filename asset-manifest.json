@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/my-unsplash/static/css/main.d939cf6e.css",
+    "main.js": "/my-unsplash/static/js/main.00b9a4d3.js",
+    "static/media/logo.svg": "/my-unsplash/static/media/logo.d42f3365ba14c823e87a1eb774003fe3.svg",
+    "index.html": "/my-unsplash/index.html",
+    "main.d939cf6e.css.map": "/my-unsplash/static/css/main.d939cf6e.css.map",
+    "main.00b9a4d3.js.map": "/my-unsplash/static/js/main.00b9a4d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d939cf6e.css",
+    "static/js/main.00b9a4d3.js"
+  ]
+}
