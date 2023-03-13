@@ -11,7 +11,7 @@ const UploadPopup = ({ handleClose }) => {
     e.preventDefault();
     const data = { img: image, title: title };
 
-    fetch("http://localhost:8080/upload", {
+    fetch("http://209.192.200.84:8080/upload", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
