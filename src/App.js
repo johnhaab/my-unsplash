@@ -27,7 +27,6 @@ class App extends React.Component {
     socket.onopen = () => {
       console.log("Connected to WebSocket server");
     };
-
     socket.onmessage = (event) => {
       const message = JSON.parse(event.data);
       if (message.type === "INITIAL_STATE") {
@@ -43,7 +42,6 @@ class App extends React.Component {
         });
       }
     };
-
     socket.onclose = () => {
       console.log("Disconnected from WebSocket server");
     };
