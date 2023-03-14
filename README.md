@@ -115,8 +115,8 @@ John Haab - [@johnlhaab](https://twitter.com/johnlhaab) - contact@johnhaab.xyz
 [license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
 
-[EXPRESS-img](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
-[EXPRESS-url](https://expressjs.com/)
+[EXPRESS-img]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
+[EXPRESS-url]: https://expressjs.com/
 
 
 
